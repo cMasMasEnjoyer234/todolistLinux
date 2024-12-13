@@ -1,0 +1,5 @@
+(viernes)
+estudiar_C=0
+hacer_ejercicio=0
+avanzarProyecto=0
+
