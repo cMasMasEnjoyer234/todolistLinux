@@ -68,16 +68,21 @@ void actualizar_estado_tarea(const char *nombre_archivo, const char *tarea, int 
     printf("Tarea no encontrada para modificar.\n");
 }
 
-void todolistGeneral(const char *archivo_config, int opciones,const char *dia){
+void todolistGeneral(const char *archivo_config, int opciones,const char *dia, bool verdadero){
 	char tarea1[100];
 	snprintf(tarea1, sizeof(tarea1), "%s%s", "estudiar_C", dia);
 	char tarea2[100];
 	snprintf(tarea2, sizeof(tarea2), "%s%s", "avanzarProyecto", dia);
 	char tarea3[100];
 	snprintf(tarea3, sizeof(tarea3), "%s%s", "todolist_emocional", dia);
+	
 
-
-
+			if(obtener_estado_tarea(archivo_config, tarea1) == 1 && obtener_estado_tarea(archivo_config, tarea2) == 1 && obtener_estado_tarea(archivo_config, tarea3) == 1){
+				actualizar_estado_tarea(archivo_config, "listo", 1);			
+			}
+			else{
+		
+			actualizar_estado_tarea(archivo_config, "listo", 0);			
 		    	if(obtener_estado_tarea(archivo_config, tarea1) == 0){
 		    		printf("\033[33m(1):Estudiar C!\033[33m\n");
 		    	}
@@ -109,16 +114,18 @@ void todolistGeneral(const char *archivo_config, int opciones,const char *dia){
 			if(opciones == 3){
 				actualizar_estado_tarea(archivo_config, tarea3, 1);
 			}
-
-
+			
+			}
 }
+
+
 
 int main() {
    	bool verdadero = true; 
 	int opciones; //se usara multiples veces, no modificar.
-	int salida; // para salir de la app
 	time_t t;
     	struct tm *local_time;
+	int salida; // para salir de la app
     	const char *archivo_config = "archivos/tareas.txt"; // abro pointer de el archivo  
     	// Obtener el tiempo actual
     	t = time(NULL);
@@ -160,7 +167,7 @@ int main() {
 			printf("Descansa noob");
 			break;
      		case LUNES:                  
-			todolistGeneral(archivo_config, opciones,"1");			
+			todolistGeneral(archivo_config, opciones,"1", verdadero);			
 			break;            
     		case MARTES:
 			actualizar_estado_tarea(archivo_config, "estudiar_C1", 0);
@@ -168,7 +175,7 @@ int main() {
 			actualizar_estado_tarea(archivo_config, "todolist_emocional1", 0);
 
 	
-			todolistGeneral(archivo_config, opciones, "2");			
+			todolistGeneral(archivo_config, opciones, "2", verdadero);			
 		    	break;            
 		case MIERCOLES:
 			actualizar_estado_tarea(archivo_config, "estudiar_C2", 0);
@@ -176,7 +183,7 @@ int main() {
 			actualizar_estado_tarea(archivo_config, "todolist_emocional2", 0);
 
 
-			todolistGeneral(archivo_config, opciones, "3");			
+			todolistGeneral(archivo_config, opciones, "3", verdadero);			
 			break;            
 		case JUEVES:
 			actualizar_estado_tarea(archivo_config, "estudiar_C3", 0);
@@ -184,7 +191,7 @@ int main() {
 			actualizar_estado_tarea(archivo_config, "todolist_emocional3", 0);
 
 
-			todolistGeneral(archivo_config, opciones, "4");			
+			todolistGeneral(archivo_config, opciones, "4", verdadero);			
 			break;            	
 	
 		case VIERNES:
@@ -192,7 +199,7 @@ int main() {
 			actualizar_estado_tarea(archivo_config, "avanzarProyecto4", 0);
 			actualizar_estado_tarea(archivo_config, "todolist_emocional4", 0);
 
-			todolistGeneral(archivo_config, opciones, "5");			
+			todolistGeneral(archivo_config, opciones, "5", verdadero);			
 			break;            
     		case SABADO:
 			actualizar_estado_tarea(archivo_config, "estudiar_C5", 0);
@@ -204,13 +211,19 @@ int main() {
 			break;            
 
     	}
-	printf("\033[32mDesea Salir?. si(1), no(0)\033[32m");
-	scanf("%d",&salida);
-  	if(salida == 1){
+
+   	if(obtener_estado_tarea(archivo_config, "listo") != 1){
+
+		printf("\033[32mDesea Salir?. si(1), no(0)\033[32m");
+		scanf("%d",&salida);
+  		if(salida == 1){
+			verdadero = false;
+		}
+
+	}else {
 		break;
 	} 
-    
-    
+	
     }
 
 
