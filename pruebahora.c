@@ -174,6 +174,7 @@ int main() {
     while(continuar){
      	switch(dia){
     		case DOMINGO:
+			continuar = false;
 			printf("Descansa noob");
 			break;
      		case LUNES:                  
@@ -216,7 +217,7 @@ int main() {
 			//actualizar_estado_tarea(archivo_config, "avanzarProyecto5", 0);
 			actualizar_estado_tarea(archivo_config, "todolist_emocional5", 0);
 
-
+			continuar = false;
 			printf("descansa noob"); 	
 			break;            
 
@@ -235,7 +236,6 @@ int main() {
 	//} 
 	
     }
-
 
 	return 0;
 }
