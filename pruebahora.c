@@ -74,7 +74,13 @@ bool todolistGeneral(const char *archivo_config,const char *dia){
 	snprintf(tarea1, sizeof(tarea1), "%s%s", "estudiar_C", dia);
 	char tarea2[100];
 	snprintf(tarea2, sizeof(tarea2), "%s%s", "todolist_emocional", dia);
+	char tarea3[100];
+	snprintf(tarea3, sizeof(tarea3), "%s%s", "calculo_", dia);
+	char tarea4[100];
+	snprintf(tarea4, sizeof(tarea4), "%s%s", "estadistica_probabilidad", dia);
 	
+
+
 
 	if(obtener_estado_tarea(archivo_config, tarea1) == 1 /*&& obtener_estado_tarea(archivo_config, tarea2) == 1 */&& obtener_estado_tarea(archivo_config, tarea2) == 1){
 		//actualizar_estado_tarea(archivo_config, "listo", 1);
@@ -87,14 +93,20 @@ bool todolistGeneral(const char *archivo_config,const char *dia){
 		}
 
 		if(obtener_estado_tarea(archivo_config, tarea2) == 0){
-			printf("\033[33m(2):Hacer Todolist Emocional !\033[33m\n");
+			printf("\033[33m(2):Mira a la izquierda :v !\033[33m\n");
 		}
+
+		if (obtener_estado_tarea(archivo_config, tarea3) == 0) {
+			printf("Estudia calculo!");	
+		}
+		if (obtener_estado_tarea(archivo_config, tarea4) == 0) {
+			printf("Estudia estadistica y probabilidad!");	
+		}
+
 
 
 		printf("\033[32mselecciona tarea para marcarla como hecho... \033[32m\n");
 		opciones = getchar();
-	
-		
 		//OPCIONES PARA QUE SE DEJEN DE MOSTRAR EN EL DIA	
 		
 		
@@ -109,7 +121,10 @@ bool todolistGeneral(const char *archivo_config,const char *dia){
 		else if(opciones == EOF){
 			return false;
 		}
-			
+		else{
+			printf("no hagas eso.");
+			return true;
+		}		
 	//OPCIONES PARA QUE SE DEJEN DE MOSTRAR EN EL DIA	
 	}
 	system("clear");
@@ -119,7 +134,14 @@ bool todolistGeneral(const char *archivo_config,const char *dia){
 
 
 int main() {
-   	bool  continuar= true; 
+
+//	system("resize -s 600 800");
+//	printf("\033[8;28;51t");
+
+//	system("kitty sh -c \"cd /home/ec/proyectos/clanguage/todolist && ./todolistApp && printf '\\033[8;51;28t'\"");
+	system("clear");
+	system("clear");
+	bool  continuar= true; 
 	time_t t;
     	struct tm *local_time;
     	const char *archivo_config = "archivos/tareas.txt"; // abro pointer de el archivo  
@@ -160,10 +182,14 @@ int main() {
     while(continuar){
      	switch(dia){
     		case DOMINGO:
-			continuar = false;
-			printf("Descansa noob");
+			
+			actualizar_estado_tarea(archivo_config, "estadistica_probabilidad6", 0);
+			actualizar_estado_tarea(archivo_config, "todolist_emocional6", 0);
+			continuar = todolistGeneral(archivo_config,"7");			
 			break;
      		case LUNES:                  
+			
+			actualizar_estado_tarea(archivo_config, "todolist_emocional7", 0);
 			continuar = todolistGeneral(archivo_config,"1");			
 			break;            
     		case MARTES:
@@ -175,31 +201,30 @@ int main() {
 		    	break;            
 		case MIERCOLES:
 			actualizar_estado_tarea(archivo_config, "estudiar_C2", 0);
-			actualizar_estado_tarea(archivo_config, "todolist_emocional2", 0);
-
+			actualizar_estado_tarea(archivo_config, "todolist_emocional2", 0);	
+			actualizar_estado_tarea(archivo_config, "calculo_2", 0);
 
 			continuar = todolistGeneral(archivo_config,"3");			
 			break;            
 		case JUEVES:
 			actualizar_estado_tarea(archivo_config, "estudiar_C3", 0);
 			actualizar_estado_tarea(archivo_config, "todolist_emocional3", 0);
-
-
+			actualizar_estado_tarea(archivo_config, "estadistica_probabilidad3", 0);
+		
 			continuar = todolistGeneral(archivo_config,"4");			
+			
 			break;            	
 	
 		case VIERNES:
-			actualizar_estado_tarea(archivo_config, "estudiar_C4", 0);
 			actualizar_estado_tarea(archivo_config, "todolist_emocional4", 0);
 
 			continuar = todolistGeneral(archivo_config,"5");			
 			break;            
     		case SABADO:
-			actualizar_estado_tarea(archivo_config, "estudiar_C5", 0);
+			
+			actualizar_estado_tarea(archivo_config, "calculo_5", 0);
 			actualizar_estado_tarea(archivo_config, "todolist_emocional5", 0);
-
-			continuar = false;
-			printf("descansa noob"); 	
+			continuar = todolistGeneral(archivo_config,"6");
 			break;            
 
     	}

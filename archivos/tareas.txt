@@ -3,29 +3,26 @@ listo=0
 
 (lunes)
 estudiar_C1=0
-todolist_emocional=01
-avanzarProyecto=0
+todolist_emocional1=0
+
 (martes)
-estudiar_C2=0
-todolist_emocional=20
-avanzarProyecto=0
+calculo_2=0
+todolist_emocional2=0
 
 (miercoles)
-estudiar_C3=0
+estadistica_probabilidad3=0
 todolist_emocional3=0
-avanzarProyecto=0
+
 (jueves)
 estudiar_C4=0
 todolist_emocional4=0
-avanzarProyecto=0
 
 (viernes)
-estudiar_C5=0
+calculo_5=0
 todolist_emocional5=0
-avanzarProyecto=0
 
-
-
-
-
-
+(sabado)
+estadistica_probabilidad6=0
+todolist_emocional6=0
+(domingo)
+todolist_emocional7=0
