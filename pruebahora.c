@@ -73,16 +73,16 @@ bool todolistGeneral(const char *archivo_config,const char *dia){
 	char tarea1[100];
 	snprintf(tarea1, sizeof(tarea1), "%s%s", "estudiar_C", dia);
 	char tarea2[100];
-	snprintf(tarea2, sizeof(tarea2), "%s%s", "todolist_emocional", dia);
+	snprintf(tarea2, sizeof(tarea2), "%s%s", "todolist_emocional_", dia);
 	char tarea3[100];
-	snprintf(tarea3, sizeof(tarea3), "%s%s", "calculo_", dia);
+	snprintf(tarea3, sizeof(tarea3), "%s%s", "raylib_", dia);
 	char tarea4[100];
-	snprintf(tarea4, sizeof(tarea4), "%s%s", "estadistica_probabilidad", dia);
+	snprintf(tarea4, sizeof(tarea4), "%s%s", "clay_", dia);
 	
 
 
 
-	if(obtener_estado_tarea(archivo_config, tarea1) == 1 /*&& obtener_estado_tarea(archivo_config, tarea2) == 1 */&& obtener_estado_tarea(archivo_config, tarea2) == 1){
+	if(obtener_estado_tarea(archivo_config, tarea1) == 1 && obtener_estado_tarea(archivo_config, tarea2) == 1 && obtener_estado_tarea(archivo_config, tarea3) == 1 &&  obtener_estado_tarea(archivo_config, tarea4)){
 		//actualizar_estado_tarea(archivo_config, "listo", 1);
 		return false;		
 	}
@@ -93,14 +93,17 @@ bool todolistGeneral(const char *archivo_config,const char *dia){
 		}
 
 		if(obtener_estado_tarea(archivo_config, tarea2) == 0){
-			printf("\033[33m(2):Mira a la izquierda :v !\033[33m\n");
+		
+			printf("\033[33m(2):Hacer todolist!\033[33m\n");
 		}
 
 		if (obtener_estado_tarea(archivo_config, tarea3) == 0) {
-			printf("Estudia calculo!");	
+		
+			printf("\033[33m(3):Estudiar raylib_!\033[33m\n");
 		}
 		if (obtener_estado_tarea(archivo_config, tarea4) == 0) {
-			printf("Estudia estadistica y probabilidad!");	
+		
+			printf("\033[33m(4):Estudiar clay!\033[33m\n");
 		}
 
 
@@ -117,7 +120,17 @@ bool todolistGeneral(const char *archivo_config,const char *dia){
 		if(opciones == '2'){
 			actualizar_estado_tarea(archivo_config, tarea2, 1);
 		}
-		
+
+		if(opciones == '3'){
+			actualizar_estado_tarea(archivo_config, tarea3, 1);
+		}
+	
+		if(opciones == '4'){
+			actualizar_estado_tarea(archivo_config, tarea4, 1);
+		}
+	
+
+
 		else if(opciones == EOF){
 			return false;
 		}
@@ -183,47 +196,100 @@ int main() {
      	switch(dia){
     		case DOMINGO:
 			
-			actualizar_estado_tarea(archivo_config, "estadistica_probabilidad6", 0);
-			actualizar_estado_tarea(archivo_config, "todolist_emocional6", 0);
+			actualizar_estado_tarea(archivo_config, "estudiar_C7",1);	
+			
+			actualizar_estado_tarea(archivo_config, "todolist_emocional_6",0);	
+			
+			actualizar_estado_tarea(archivo_config, "raylib_7",1);	
+	
+			actualizar_estado_tarea(archivo_config, "clay_7",1);	
+			
 			continuar = todolistGeneral(archivo_config,"7");			
 			break;
      		case LUNES:                  
 			
-			actualizar_estado_tarea(archivo_config, "todolist_emocional7", 0);
+			actualizar_estado_tarea(archivo_config, "estudiar_C7",1);	
+			
+			actualizar_estado_tarea(archivo_config, "todolist_emocional_7",0);	
+			
+			actualizar_estado_tarea(archivo_config, "raylib_1",1);	
+	
+			actualizar_estado_tarea(archivo_config, "clay_1",1);	
+				
+			
 			continuar = todolistGeneral(archivo_config,"1");			
 			break;            
     		case MARTES:
-			actualizar_estado_tarea(archivo_config, "estudiar_C1", 0);
-			actualizar_estado_tarea(archivo_config, "todolist_emocional1", 0);
+				
+			actualizar_estado_tarea(archivo_config, "estudiar_C2",1);	
+			
+			actualizar_estado_tarea(archivo_config, "todolist_emocional_1",0);	
+			
+			actualizar_estado_tarea(archivo_config, "raylib_1",1);	
+	
+			actualizar_estado_tarea(archivo_config, "clay_2",1);	
+			
 
 	
 			continuar = todolistGeneral(archivo_config,"2");			
 		    	break;            
 		case MIERCOLES:
-			actualizar_estado_tarea(archivo_config, "estudiar_C2", 0);
-			actualizar_estado_tarea(archivo_config, "todolist_emocional2", 0);	
-			actualizar_estado_tarea(archivo_config, "calculo_2", 0);
+					
+			actualizar_estado_tarea(archivo_config, "estudiar_C3",1);	
+			
+			actualizar_estado_tarea(archivo_config, "todolist_emocional_2",0);	
+			
+			actualizar_estado_tarea(archivo_config, "raylib_3",1);	
+	
+			actualizar_estado_tarea(archivo_config, "clay_2",1);	
+	
 
-			continuar = todolistGeneral(archivo_config,"3");			
+		continuar = todolistGeneral(archivo_config,"3");			
 			break;            
 		case JUEVES:
-			actualizar_estado_tarea(archivo_config, "estudiar_C3", 0);
-			actualizar_estado_tarea(archivo_config, "todolist_emocional3", 0);
-			actualizar_estado_tarea(archivo_config, "estadistica_probabilidad3", 0);
+						
+			actualizar_estado_tarea(archivo_config, "estudiar_C3",1);	
+			
+			actualizar_estado_tarea(archivo_config, "todolist_emocional_3",0);	
+			
+			actualizar_estado_tarea(archivo_config, "raylib_4",1);	
+	
+			actualizar_estado_tarea(archivo_config, "clay_4",1);	
+	
+
+	
 		
 			continuar = todolistGeneral(archivo_config,"4");			
 			
 			break;            	
 	
 		case VIERNES:
-			actualizar_estado_tarea(archivo_config, "todolist_emocional4", 0);
+							
+			actualizar_estado_tarea(archivo_config, "estudiar_C5",1);	
+			
+			actualizar_estado_tarea(archivo_config, "todolist_emocional_4",0);	
+			
+			actualizar_estado_tarea(archivo_config, "raylib_4",1);	
+	
+			actualizar_estado_tarea(archivo_config, "clay_5",1);	
+	
+
+
 
 			continuar = todolistGeneral(archivo_config,"5");			
 			break;            
     		case SABADO:
+							
+			actualizar_estado_tarea(archivo_config, "estudiar_C6",1);	
 			
-			actualizar_estado_tarea(archivo_config, "calculo_5", 0);
-			actualizar_estado_tarea(archivo_config, "todolist_emocional5", 0);
+			actualizar_estado_tarea(archivo_config, "todolist_emocional_5",0);	
+			
+			actualizar_estado_tarea(archivo_config, "raylib_6",1);	
+	
+			actualizar_estado_tarea(archivo_config, "clay_5",1);	
+	
+
+
 			continuar = todolistGeneral(archivo_config,"6");
 			break;            
 
@@ -234,4 +300,3 @@ int main() {
 
 	return 0;
 }
-

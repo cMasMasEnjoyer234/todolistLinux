@@ -1,28 +1,48 @@
 listo=0
 
+(domingo
+estudiar_C7=0
+todolist_emocional_7=0
+raylib_7=0
+clay_7=0
+
 
 (lunes)
 estudiar_C1=0
-todolist_emocional1=0
+todolist_emocional_1=0
+raylib_1=0
+clay_1=0 
 
 (martes)
-calculo_2=0
-todolist_emocional2=0
+estudiar_C2=0
+todolist_emocional_2=0
+raylib_2=0
+clay_2=1
+
 
 (miercoles)
-estadistica_probabilidad3=0
-todolist_emocional3=0
+estudiar_C3=1
+todolist_emocional_3=0
+raylib_3=1
+clay_3=0
 
 (jueves)
 estudiar_C4=0
-todolist_emocional4=0
+todolist_emocional_4=0
+raylib_4=0
+clay_4=0
+
 
 (viernes)
-calculo_5=0
-todolist_emocional5=0
+estudiar_C5=0
+todolist_emocional_5=0
+raylib_5=0
+clay_5=0
+
 
 (sabado)
-estadistica_probabilidad6=0
+estudiar_C6=0
 todolist_emocional6=0
-(domingo)
-todolist_emocional7=0
+raylib_6=0
+clay_6=0
+
